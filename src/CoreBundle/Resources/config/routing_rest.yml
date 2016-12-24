@@ -1,0 +1,4 @@
+directors :
+  type: rest
+  resource:     "CoreBundle:DirectorRest"
+  name_prefix:  api_
