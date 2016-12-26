@@ -3,12 +3,15 @@
 namespace CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
 
 /**
  * Movie
  *
  * @ORM\Table(name="movie")
  * @ORM\Entity(repositoryClass="CoreBundle\Repository\MovieRepository")
+ * @ExclusionPolicy("all")
  */
 class Movie
 {
@@ -18,6 +21,7 @@ class Movie
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Expose
      */
     private $id;
 
@@ -25,13 +29,15 @@ class Movie
      * @var int
      *
      * @ORM\Column(name="duration", type="smallint", nullable=true)
+     * @Expose
      */
     private $duration;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="releaseDate", type="datetime", nullable=true)
+     * @ORM\Column(name="releaseDate", type="date", nullable=true)
+     * @Expose
      */
     private $releaseDate;
 
@@ -39,6 +45,7 @@ class Movie
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Expose
      */
     private $title;
 
@@ -47,6 +54,7 @@ class Movie
      *
      * @ORM\ManyToOne(targetEntity="CoreBundle\Entity\Director")
      * @ORM\JoinColumn(name="fk_director", referencedColumnName="id", nullable=true, onDelete="SET NULL")
+     * @Expose
      */
     private $director;
 
@@ -55,6 +63,7 @@ class Movie
      *
      * @ORM\ManyToOne(targetEntity="CoreBundle\Entity\Genre")
      * @ORM\JoinColumn(name="fk_genre", referencedColumnName="id", nullable=true, onDelete="SET NULL")
+     * @Expose
      */
     private $genre;
 

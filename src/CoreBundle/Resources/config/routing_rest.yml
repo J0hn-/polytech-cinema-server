@@ -2,3 +2,18 @@ directors :
   type: rest
   resource:     "CoreBundle:DirectorRest"
   name_prefix:  api_
+
+genres :
+  type: rest
+  resource:     "CoreBundle:GenreRest"
+  name_prefix:  api_
+
+movies :
+  type: rest
+  resource:     "CoreBundle:MovieRest"
+  name_prefix:  api_
+
+actors :
+  type: rest
+  resource:     "CoreBundle:ActorRest"
+  name_prefix:  api_

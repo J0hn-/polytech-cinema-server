@@ -3,12 +3,15 @@
 namespace CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
 
 /**
  * Genre
  *
  * @ORM\Table(name="genre")
  * @ORM\Entity(repositoryClass="CoreBundle\Repository\GenreRepository")
+ * @ExclusionPolicy("all")
  */
 class Genre
 {
@@ -18,6 +21,7 @@ class Genre
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Expose
      */
     private $id;
 
@@ -25,6 +29,7 @@ class Genre
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=50, unique=true)
+     * @Expose
      */
     private $title;
 
