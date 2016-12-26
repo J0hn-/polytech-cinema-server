@@ -23,8 +23,8 @@ class MovieRestControllerTest extends WebTestCase
             'duration' => '42',
             'releaseDate'  => '1994-12-25T00:00:00+0000',
             'title' => 'OMG',
-            'director' => 1,
-            'genre' => 1
+            'director' => null,
+            'genre' => null
         ));
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
@@ -55,8 +55,8 @@ class MovieRestControllerTest extends WebTestCase
             'duration' => '42',
             'releaseDate'  => '1994-12-25T00:00:00+0000',
             'title' => 'OMG!!!!',
-            'director' => 1,
-            'genre' => 1
+            'director' => null,
+            'genre' => null
         ));
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
