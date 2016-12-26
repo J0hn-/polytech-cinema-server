@@ -6,18 +6,17 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class DirectorRestControllerTest extends WebTestCase
 {
+
     public function testDirectors()
     {
         $client = static::createClient();
-
-        $crawler = $client->request('GET', '/directors');
+        $client->request('GET', '/directors');
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
         $this->assertJson($client->getResponse()->getContent());
     }
 
-    public function testCRUD()
-    {
+    public function testCreate(){
         $client = static::createClient();
 
         $client->request('POST', '/directors', array(
@@ -27,23 +26,43 @@ class DirectorRestControllerTest extends WebTestCase
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
         $this->assertJson($client->getResponse()->getContent());
-        $director = json_decode($client->getResponse()->getContent());
+        return json_decode($client->getResponse()->getContent());
+    }
 
-        // READ
+    /**
+     * @depends testCreate
+     * @param $director
+     */
+    public function testRead($director) {
+        $client = static::createClient();
         $client->request('GET', '/directors/'.$director->id);
+
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
         $this->assertJson($client->getResponse()->getContent());
         $this->assertEquals($director, json_decode($client->getResponse()->getContent()));
+    }
 
-        // MODIFY
+    /**
+     * @depends testCreate
+     * @param $director
+     */
+    public function testModify($director) {
+        $client = static::createClient();
         $client->request('PUT', '/directors/'.$director->id, array(
             'firstName' => 'John',
             'lastName'  => 'Stark'
         ));
+
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
         $this->assertJson($client->getResponse()->getContent());
+    }
 
-        // DELETE
+    /**
+     * @depends testCreate
+     * @param $director
+     */
+    public function testDelete($director) {
+        $client = static::createClient();
         $client->request('DELETE', '/directors/'.$director->id);
         $this->assertEquals(204, $client->getResponse()->getStatusCode());
     }
