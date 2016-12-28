@@ -1,0 +1,11 @@
+.git/
+.idea/
+app/logs/
+var/cache/
+var/logs/
+.gitignore
+.travis.yml
+Dockerfile
+install_and_run.sh
+docker-compose.yml
+app/config/parameters.yml
