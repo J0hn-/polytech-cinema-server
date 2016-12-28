@@ -1,0 +1,19 @@
+<VirtualHost *:80>
+    ServerName symfony.docker
+    SetEnvIfNoCase ^Authorization$ "(.+)" HTTP_AUTHORIZATION=/scripts/pre-init.d
+    <FilesMatch \.php$>
+        SetHandler proxy:fcgi://127.0.0.1:9000
+    </FilesMatch>
+    <Directory /app/web>
+        AllowOverride None
+        Require all granted
+        DirectoryIndex app.php
+        <IfModule mod_rewrite.c>
+            Options -MultiViews +FollowSymlinks
+            RewriteEngine On
+            RewriteCond %{REQUEST_FILENAME} !-f
+            RewriteRule ^ app.php [QSA,L]
+        </IfModule>
+    </Directory>
+</VirtualHost>
+# IncludeOptional /app/vhost2

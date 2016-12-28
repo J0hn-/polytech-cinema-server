@@ -1,0 +1,19 @@
+version: '2'
+services:
+  symfony:
+    image: "j0hn/polytech-cinema-server"
+    ports:
+     - "80:80"
+    links:
+    - db:mysql
+  db:
+    image: "mysql"
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: symfony
+        MYSQL_USER: symfony
+        MYSQL_PASSWORD: symfony
+    volumes:
+    - db_data:/var/lib/mysql
+volumes:
+    db_data:
