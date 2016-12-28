@@ -20,8 +20,8 @@ class DirectorRestControllerTest extends WebTestCase
         $client = static::createClient();
 
         $client->request('POST', '/directors', array(
-            'firstName' => 'John',
-            'lastName'  => 'Snow'
+            'first_name' => 'John',
+            'last_name'  => 'Snow'
         ));
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
@@ -49,8 +49,8 @@ class DirectorRestControllerTest extends WebTestCase
     public function testModify($director) {
         $client = static::createClient();
         $client->request('PUT', '/directors/'.$director->id, array(
-            'firstName' => 'John',
-            'lastName'  => 'Stark'
+            'first_name' => 'John',
+            'last_name'  => 'Stark'
         ));
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());

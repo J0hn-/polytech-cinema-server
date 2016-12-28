@@ -17,7 +17,7 @@ class MovieType extends AbstractType
     {
         $builder
             ->add('duration')
-            ->add('releaseDate', DateTimeType::class, array(
+            ->add('release_date', DateTimeType::class, array(
                 'widget' => 'single_text',
                 'input' => 'datetime'
             ))

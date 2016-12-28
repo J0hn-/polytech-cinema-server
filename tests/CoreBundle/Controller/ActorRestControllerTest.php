@@ -20,8 +20,8 @@ class ActorRestControllerTest extends WebTestCase
         $client = static::createClient();
 
         $client->request('POST', '/actors', array(
-            'firstName' => 'John',
-            'lastName'  => 'Snow',
+            'first_name' => 'John',
+            'last_name'  => 'Snow',
             'birthday'  => '1994-12-25T00:00:00+0000',
             'deathday'  => ''
         ));
@@ -51,8 +51,8 @@ class ActorRestControllerTest extends WebTestCase
     public function testModify($actor) {
         $client = static::createClient();
         $client->request('PUT', '/actors/'.$actor->id, array(
-            'firstName' => 'John',
-            'lastName'  => 'Stark',
+            'first_name' => 'John',
+            'last_name'  => 'Stark',
             'birthday'  => '1994-12-25T00:00:00+0000',
             'deathday'  => '2016-12-25T00:00:00+0000'
         ));

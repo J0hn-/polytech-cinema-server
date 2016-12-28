@@ -21,7 +21,7 @@ class MovieRestControllerTest extends WebTestCase
 
         $client->request('POST', '/movies', array(
             'duration' => '42',
-            'releaseDate'  => '1994-12-25T00:00:00+0000',
+            'release_date'  => '1994-12-25T00:00:00+0000',
             'title' => 'OMG',
             'director' => null,
             'genre' => null
@@ -53,7 +53,7 @@ class MovieRestControllerTest extends WebTestCase
         $client = static::createClient();
         $client->request('PUT', '/movies/'.$movie->id, array(
             'duration' => '42',
-            'releaseDate'  => '1994-12-25T00:00:00+0000',
+            'release_date'  => '1994-12-25T00:00:00+0000',
             'title' => 'OMG!!!!',
             'director' => null,
             'genre' => null

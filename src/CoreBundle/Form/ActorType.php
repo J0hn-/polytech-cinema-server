@@ -23,8 +23,8 @@ class ActorType extends AbstractType
                 'widget' => 'single_text',
                 'input' => 'datetime'
             ))
-            ->add('firstName')
-            ->add('lastName')
+            ->add('first_name')
+            ->add('last_name')
         ;
     }
     
