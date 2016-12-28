@@ -1,7 +1,13 @@
+sudo: required
+
 language: php
 
 php:
     - 5.5
+
+services:
+  - docker
+  - mysql
 
 before_script:
   - cp app/config/parameters.yml.travis app/config/parameters.yml
@@ -12,3 +18,8 @@ before_script:
 
 script:
   - phpunit
+
+after_success:
+  - "docker login -u $DOCKER_USER -p $DOCKER_PASSWORD"
+  - "docker build -t $DOCKER_USER/polytech-cinema-server ."
+  - "docker push $DOCKER_USER/polytech-cinema-server"
