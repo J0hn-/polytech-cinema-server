@@ -1,11 +1,12 @@
 <?php
 namespace CoreBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use CoreBundle\Entity\Director;
 
-class LoadDirectorData implements FixtureInterface
+class LoadDirectorData extends AbstractFixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
